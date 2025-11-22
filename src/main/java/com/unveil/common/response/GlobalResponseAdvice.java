@@ -33,8 +33,12 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 
         String path = request.getURI().getPath();
 
+        // Swagger / SpringDoc / 에러 응답은 래핑하지 않음
         if (path.startsWith("/v3/api-docs") ||
-                path.startsWith("/swagger") ||
+                path.startsWith("/api-docs") ||
+                path.startsWith("/swagger-ui") ||
+                path.startsWith("/swagger-resources") ||
+                path.startsWith("/webjars") ||
                 path.startsWith("/error")) {
             return body;
         }

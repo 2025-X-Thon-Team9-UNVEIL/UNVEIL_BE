@@ -27,17 +27,14 @@ public class SecurityConfig {
                 // URL별 권한 설정
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(
-                                "/signup",
-                                "/auth/normal",
-                                "/auth/google",
-                                "/auth/kakao",
-                                "/signup/duplicate",
+                                "/api/users/signup",
+                                "/api/**",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/api-docs/**",
-                                "/swagger-ui.html"
+                                "/swagger-resources/**"
                         ).permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults()); // 임시로 httpBasic 활성화
