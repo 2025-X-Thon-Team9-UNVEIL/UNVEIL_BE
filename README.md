@@ -10,6 +10,7 @@ Spring Boot 기반 백엔드 프로젝트입니다.
 - Spring Data JPA
 - MySQL
 - Lombok
+- SpringDoc OpenAPI (Swagger)
 
 ## 프로젝트 구조
 
@@ -45,6 +46,8 @@ src/
 - 서버 포트: 8080
 - Context Path: /api
 - 데이터베이스: MySQL (localhost:3306/unveil)
+- Swagger UI: http://localhost:8080/api/swagger-ui.html
+- API Docs: http://localhost:8080/api/api-docs
 
 ## 개발 환경
 
