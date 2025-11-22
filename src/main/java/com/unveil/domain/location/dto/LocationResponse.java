@@ -12,8 +12,11 @@ public record LocationResponse(
         @Schema(example = "A")
         String noiseLevel,
 
+        @Schema(example = "A")
+        String streetlightLevel,
+
         @Schema(example = "B")
-        String safeLevel,
+        String cctvLevel,
 
         @Schema(example = "A")
         String score
@@ -23,7 +26,8 @@ public record LocationResponse(
         return new LocationResponse(
                 location.getAddress(),
                 location.getNoiseLevel(),
-                location.getSafeLevel(),
+                location.getStreetlightLevel(),
+                location.getCctvLevel(),
                 location.getScore()
         );
     }

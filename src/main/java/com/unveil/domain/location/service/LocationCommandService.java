@@ -35,7 +35,8 @@ public class LocationCommandService {
                 .user(user)
                 .address(request.address())
                 .noiseLevel(request.noiseLevel())
-                .safeLevel(request.safeLevel())
+                .streetlightLevel(request.streetlightLevel())
+                .cctvLevel(request.cctvLevel())
                 .score(request.score())
                 .build();
 

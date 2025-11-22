@@ -29,17 +29,22 @@ public class Location {
     private String noiseLevel;
 
     @Column(nullable = false, length = 1)
-    private String safeLevel;
+    private String streetlightLevel;
+
+    @Column(nullable = false, length = 1)
+    private String cctvLevel;
 
     @Column(nullable = false, length = 1)
     private String score;
 
     @Builder
-    public Location(User user, String address, String noiseLevel, String safeLevel, String score) {
+    public Location(User user, String address, String noiseLevel,
+                    String streetlightLevel, String cctvLevel, String score) {
         this.user = user;
         this.address = address;
         this.noiseLevel = noiseLevel;
-        this.safeLevel = safeLevel;
+        this.streetlightLevel = streetlightLevel;
+        this.cctvLevel = cctvLevel;
         this.score = score;
     }
 }

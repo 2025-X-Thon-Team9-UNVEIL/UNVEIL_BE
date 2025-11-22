@@ -13,9 +13,13 @@ public record LocationCreateRequest(
         @Schema(example = "A")
         String noiseLevel,
 
-        @NotBlank(message = "안전 등급은 필수입니다.")
+        @NotBlank(message = "가로등 등급은 필수입니다.")
+        @Schema(example = "A")
+        String streetlightLevel,
+
+        @NotBlank(message = "CCTV 등급은 필수입니다.")
         @Schema(example = "B")
-        String safeLevel,
+        String cctvLevel,
 
         @NotBlank(message = "점수는 필수입니다.")
         @Schema(example = "A")
