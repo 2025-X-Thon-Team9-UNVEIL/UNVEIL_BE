@@ -45,6 +45,7 @@ logs/
 
 ### Application ###
 application-local.yml
+application-prod.yml
 application-local.properties
 application.yml
 
