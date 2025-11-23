@@ -2,6 +2,7 @@ package com.unveil.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -15,6 +16,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                // CORS 활성화
+                .cors(cors -> {})
                 // CSRF 비활성화
                 .csrf(AbstractHttpConfigurer::disable)
                 // session 사용 X
@@ -25,6 +28,9 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 // URL별 권한 설정
                 .authorizeHttpRequests(requests -> requests
+
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
                         .requestMatchers(
                                 "/api/login",
                                 "/api/signup",

@@ -1,6 +1,7 @@
 package com.unveil.domain.location.service;
 
 import com.unveil.common.exception.BaseException;
+import com.unveil.common.exception.CommonErrorCode;
 import com.unveil.domain.location.dto.LocationCreateRequest;
 import com.unveil.domain.location.dto.LocationListResponse;
 import com.unveil.domain.location.dto.LocationResponse;
@@ -26,6 +27,10 @@ public class LocationCommandService {
     private final TokenService tokenService;
 
     public LocationResponse create(String authorizationHeader, LocationCreateRequest request) {
+        if (authorizationHeader == null || authorizationHeader.isBlank()) {
+            throw BaseException.type(CommonErrorCode.UNAUTHORIZED);
+        }
+
         Long userId = tokenService.getUserIdFromToken(authorizationHeader);
 
         User user = userRepository.findById(userId)
@@ -46,6 +51,10 @@ public class LocationCommandService {
     }
 
     public LocationListResponse getMyLocations(String authorizationHeader, int page, int size) {
+        if (authorizationHeader == null || authorizationHeader.isBlank()) {
+            throw BaseException.type(CommonErrorCode.UNAUTHORIZED);
+        }
+
         Long userId = tokenService.getUserIdFromToken(authorizationHeader);
 
         PageRequest pageRequest = PageRequest.of(page, size);
